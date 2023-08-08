@@ -1,5 +1,9 @@
 package ru.netology.springbootrestt1.repository;
 
+import lombok.Value;
+import org.apache.catalina.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import ru.netology.springbootrestt1.error.ErrorRegistration;
 import ru.netology.springbootrestt1.service.Authorities;
@@ -9,10 +13,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static ru.netology.springbootrestt1.service.Authorities.*;
+
 
 @Repository
+
 public class UserRepository {
+
+   private String user;
+   private String password;
+
+    public UserRepository() {
+    }
+
+    public UserRepository(String user, String password) {
+        this.user = user;
+        this.password = password;
+    }
+
     private final Map<String, String> userMap = new ConcurrentHashMap<>();
     public List<Authorities> getUserAuthorities(String user, String password) {
         List<Authorities> authorities = new ArrayList<>();
