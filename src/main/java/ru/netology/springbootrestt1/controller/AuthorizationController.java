@@ -2,10 +2,8 @@ package ru.netology.springbootrestt1.controller;
 
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.netology.springbootrestt1.client.Client;
 import ru.netology.springbootrestt1.service.Authorities;
 import ru.netology.springbootrestt1.service.AuthorizationService;
 
@@ -27,8 +25,8 @@ public AuthorizationController (AuthorizationService service) {
     }
 
 
-    @GetMapping("/registration")
-    public void userRegistration(@RequestParam("user") String user, @RequestParam("password") String password) {
-        service.register(user, password);
+    @PostMapping("/registration")
+    public void userRegistration(@RequestBody Client client) {
+        service.register(client);
     }
 }

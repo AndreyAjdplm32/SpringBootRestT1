@@ -1,6 +1,7 @@
 package ru.netology.springbootrestt1.service;
 
 import org.springframework.stereotype.Service;
+import ru.netology.springbootrestt1.client.Client;
 import ru.netology.springbootrestt1.error.InvalidCredentials;
 import ru.netology.springbootrestt1.error.UnauthorizedUser;
 import ru.netology.springbootrestt1.repository.UserRepository;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Service
 public class AuthorizationService {
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
 
     public List<Authorities> getAuthorities(String user, String password) {
         if (isEmpty(user) || isEmpty(password)) {
@@ -32,8 +33,8 @@ public class AuthorizationService {
         return str == null || str.isEmpty();
     }
 
-    public void register(String user, String password) {
-        userRepository.userRegistration(user, password);
+    public void register(Client client) {
+        userRepository.userRegistration(client);
     }
 
 
